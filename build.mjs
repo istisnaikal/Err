@@ -12,6 +12,7 @@ const csp = [
   `script-src ${scripts.join(" ")}`,
   `style-src ${styles.join(" ")}`,
   "img-src data:",
+  "connect-src 'self'",
   "base-uri 'none'",
   "form-action 'none'",
   "frame-ancestors 'none'",
