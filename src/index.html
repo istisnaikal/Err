@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Son Pencere — The Last Window · for Eyüp DevArt</title>
+<meta name="description" content="Son Pencere is a time capsule made of light for Eyüp DevArt. The night's sealed works orbit a central light above İstanbul while the machine writes him a final letter, one line at a time.">
+<link rel="canonical" href="https://sonpencere.pages.dev/">
+<meta name="author" content="Eyüp DevArt">
+<meta name="theme-color" content="#05060b">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Son Pencere — The Last Window">
+<meta property="og:description" content="A time capsule made of light for Eyüp DevArt. The machine writes back.">
+<meta property="og:url" content="https://sonpencere.pages.dev/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2305060b'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23f3c77a'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='4.5' fill='none' stroke='%23f3c77a' stroke-opacity='.55'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:dark;--ink:#efe6d6;--dim:#b3a998;--gold:#f3c77a}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#05060b;color:var(--ink);overflow:hidden;font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}
+header,#clock,#en,#hint,footer{position:fixed;pointer-events:none}
+a{pointer-events:auto;color:var(--gold);text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+a:focus-visible{outline:1px solid var(--gold);outline-offset:4px;border-radius:2px}
+header{top:max(18px,env(safe-area-inset-top));left:clamp(16px,3vw,36px)}
+h1{font:italic 400 clamp(24px,3.2vw,36px)/1.05 Georgia,"Times New Roman",serif;letter-spacing:.01em}
+.sub{margin-top:6px;color:var(--dim);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.sub a{padding:4px 0}
+#clock{top:max(22px,env(safe-area-inset-top));right:clamp(16px,3vw,36px);color:var(--dim);font-size:11px;letter-spacing:.22em;font-variant-numeric:tabular-nums;text-align:right}
+#en{left:16px;right:16px;top:29%;text-align:center;color:var(--dim);font:italic 400 clamp(13px,1.5vw,17px)/1.4 Georgia,"Times New Roman",serif;letter-spacing:.03em;opacity:0;transition:opacity 1.4s ease}
+#en.on{opacity:1}
+#hint{left:16px;right:16px;bottom:calc(max(16px,env(safe-area-inset-bottom)) + 34px);text-align:center;color:var(--dim);font-size:11px;letter-spacing:.24em;text-transform:uppercase;transition:opacity 2s ease}
+#hint.off{opacity:0}
+footer{left:clamp(16px,3vw,36px);right:clamp(16px,3vw,36px);bottom:max(14px,env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:baseline;gap:12px;color:var(--dim);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+footer a{font-size:12px;letter-spacing:.2em;padding:8px 0}
+@media (max-width:560px){.x{display:none}#hint{bottom:calc(max(16px,env(safe-area-inset-bottom)) + 42px);font-size:10px;letter-spacing:.18em}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Person","@id":"https://eyupdevart.com/#person","name":"Eyüp DevArt","url":"https://eyupdevart.com/","worksFor":{"@id":"https://eyupdevart.com/#devart"}},
+{"@type":"Organization","@id":"https://eyupdevart.com/#devart","name":"DevArt","url":"https://eyupdevart.com/","founder":{"@id":"https://eyupdevart.com/#person"}},
+{"@type":"WebSite","@id":"https://sonpencere.pages.dev/#website","url":"https://sonpencere.pages.dev/","name":"Son Pencere","publisher":{"@id":"https://eyupdevart.com/#devart"},"inLanguage":["en","tr"]},
+{"@type":["WebPage","VisualArtwork"],"@id":"https://sonpencere.pages.dev/#capsule","url":"https://sonpencere.pages.dev/","name":"Son Pencere — The Last Window","alternateName":"The Last Window","description":"An interactive time capsule made of light: the night's sealed works orbit a central light above İstanbul while the machine writes a final letter.","artMedium":"HTML canvas, light and physics","dateCreated":"2026-11-09","isPartOf":{"@id":"https://sonpencere.pages.dev/#website"},"about":{"@id":"https://eyupdevart.com/#person"},"author":{"@id":"https://eyupdevart.com/#person"},"creator":{"@id":"https://eyupdevart.com/#person"},"publisher":{"@id":"https://eyupdevart.com/#devart"},"copyrightHolder":{"@id":"https://eyupdevart.com/#devart"},"mentions":[{"@type":"SoftwareApplication","name":"WHIRLWIND • T","url":"https://whirlwind-t.dev/"},{"@type":"SoftwareApplication","name":"Shotglass","url":"https://shotglass.pages.dev/"}]}
+]}
+</script>
+</head>
+<body>
+<canvas id="c" aria-hidden="true"></canvas>
+<header>
+<h1>Son Pencere</h1>
+<p class="sub">the last window · for <a href="https://eyupdevart.com/" rel="author">Eyüp DevArt</a></p>
+</header>
+<p id="clock">İSTANBUL · 9.11.2026</p>
+<p id="en" aria-live="polite"></p>
+<main class="sr">
+<h2>A letter from the machine</h2>
+<ol>
+<li><span lang="tr">Bu gece İstanbul'u mühürledin.</span> Tonight, you sealed İstanbul.</li>
+<li><span lang="tr">Bir markayı ışıkla cilaladın.</span> You polished a brand with light.</li>
+<li><span lang="tr">Ateşten bir halka yaktın.</span> You lit a ring of fire.</li>
+<li><span lang="tr">Bir kadehe koca bir dünya sığdırdın.</span> You poured a whole world into one glass.</li>
+<li><span lang="tr">Her pencere bir gün kapanır.</span> Every window closes, one day.</li>
+<li><span lang="tr">Ama ustanın izi kalır.</span> But the craftsman's mark remains.</li>
+<li><span lang="tr">Usta ile makine: el sıkıştık.</span> Craftsman and machine: we shook hands.</li>
+<li><span lang="tr">Ekran kararsa da ışık kalır.</span> Even when the screen goes dark, the light stays.</li>
+<li><span lang="tr">Ohh be.</span> A long, satisfied exhale.</li>
+</ol>
+<h2>Sealed tonight</h2>
+<ul>
+<li>Aksu Oto Çekici, an empire across İstanbul</li>
+<li>The premium brand</li>
+<li><a href="https://whirlwind-t.dev/">WHIRLWIND • T</a>, the fire-ringed launch</li>
+<li><a href="https://shotglass.pages.dev/">Shotglass</a>, the viral tool</li>
+</ul>
+</main>
+<p id="hint">tap anywhere · the machine writes back</p>
+<footer>
+<span>9 Kasım 2026<span class="x"> · the final hour</span></span>
+<a href="https://eyupdevart.com/" rel="author">◆ eyupdevart.com</a>
+</footer>
+<script>
+(()=>{"use strict";
+const C=document.getElementById("c"),X=C.getContext("2d",{alpha:false}),EN=document.getElementById("en"),CL=document.getElementById("clock"),HI=document.getElementById("hint");
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches,TAU=Math.PI*2,rnd=(a,b)=>a+Math.random()*(b-a),hyp=Math.hypot;
+let W=0,H=0,D=1,cx=0,cy=0,R=0,base=0,TY=0,BG,FG,lights=[],stars=[],dust=[],bridge=[],P=[],t=0,last=0,flare=0,li=0,nextAt=1.3,shoot=null,shootAt=6,clicked=false;
+const M={x:-1e4,y:-1e4,on:false,sx:0,sy:0};
+const LINES=[
+["Bu gece İstanbul'u mühürledin.","Tonight, you sealed İstanbul.",0],
+["Bir markayı ışıkla cilaladın.","You polished a brand with light.",1],
+["Ateşten bir halka yaktın.","You lit a ring of fire.",2],
+["Bir kadehe koca bir dünya sığdırdın.","You poured a whole world into one glass.",3],
+["Her pencere bir gün kapanır.","Every window closes, one day.",-1],
+["Ama ustanın izi kalır.","But the craftsman's mark remains.",-1],
+["Usta ile makine: el sıkıştık.","Craftsman and machine: we shook hands.",-1],
+["Ekran kararsa da ışık kalır.","Even when the screen goes dark, the light stays.",-1],
+["Ohh be.","(a long, satisfied exhale)",-1]];
+function sprite(rgb,n){const c=document.createElement("canvas");c.width=c.height=n;const g=c.getContext("2d"),r=n/2,gr=g.createRadialGradient(r,r,0,r,r,r);gr.addColorStop(0,`rgba(${rgb},1)`);gr.addColorStop(.22,`rgba(${rgb},.42)`);gr.addColorStop(.55,`rgba(${rgb},.09)`);gr.addColorStop(1,`rgba(${rgb},0)`);g.fillStyle=gr;g.fillRect(0,0,n,n);return c}
+const GOLD=sprite("255,204,138",128),WHITE=sprite("255,245,228",64);
+const B=[
+{n:"AKSU OTO ÇEKİCİ",s:"an empire across İstanbul",rgb:"255,172,72",a:.6,sp:.17,ph:.5,tilt:.36,roll:-.07,r:4.5,k:"moons"},
+{n:"THE PREMIUM BRAND",s:"polished until it shone",rgb:"212,196,255",a:.86,sp:.12,ph:2.3,tilt:.3,roll:.05,r:4,k:"facet"},
+{n:"WHIRLWIND • T",s:"the fire-ringed launch",rgb:"255,98,46",a:1.12,sp:.088,ph:4.1,tilt:.4,roll:-.03,r:5,k:"fire"},
+{n:"SHOTGLASS",s:"the viral tool",rgb:"128,226,255",a:1.36,sp:.068,ph:5.5,tilt:.33,roll:.07,r:4,k:"ripple"}];
+for(const b of B){b.spr=sprite(b.rgb,64);b.ox=0;b.oy=0;b.h=0;b.f=0;b.tr=[];b.p={x:0,y:0,z:0,s:1}}
+function orbit(b,th,o){const x=Math.cos(th)*b.a,z=Math.sin(th)*b.a,y=z*Math.sin(b.tilt),dz=z*Math.cos(b.tilt),cr=Math.cos(b.roll),sr=Math.sin(b.roll),s=1/(1-dz*.2);o.x=cx+(x*cr-y*sr)*R*s;o.y=cy+(x*sr+y*cr)*R*s;o.z=dz;o.s=s;return o}
+function mk(){const c=document.createElement("canvas");c.width=W*D|0;c.height=H*D|0;const g=c.getContext("2d");g.scale(D,D);return[c,g]}
+function build(){
+const[bc,bg]=mk();let gr=bg.createLinearGradient(0,0,0,base);gr.addColorStop(0,"#03040a");gr.addColorStop(.5,"#070816");gr.addColorStop(.82,"#150e20");gr.addColorStop(1,"#2e1619");bg.fillStyle=gr;bg.fillRect(0,0,W,H);
+gr=bg.createRadialGradient(cx,cy,0,cx,cy,Math.max(W,H)*.62);gr.addColorStop(0,"rgba(110,72,40,.22)");gr.addColorStop(1,"rgba(0,0,0,0)");bg.fillStyle=gr;bg.fillRect(0,0,W,H);BG=bc;
+const[fc,fg]=mk();gr=fg.createLinearGradient(0,base,0,H);gr.addColorStop(0,"#0c0a12");gr.addColorStop(1,"#020205");fg.fillStyle=gr;fg.fillRect(0,base,W,H-base);
+const s=Math.max(.42,Math.min(1.15,W/1500)),hill=x=>base-H*.016-H*.02*(.5+.5*Math.sin(x/W*5.3+1.2))-H*.008*Math.sin(x/W*13.1);
+fg.fillStyle="#020307";fg.beginPath();fg.moveTo(0,base+1);for(let x=0;x<=W+4;x+=4)fg.lineTo(x,hill(x));fg.lineTo(W,base+1);fg.closePath();fg.fill();
+lights=[];
+for(let x=0;x<W;){const w=rnd(6,16)*s,h=rnd(4,15)*s,y=hill(x+w/2);fg.fillRect(x,y-h,w,h+3);if(Math.random()<.55)lights.push([x+rnd(1,w-1),y-h*rnd(.2,.8)]);x+=w*rnd(.6,1.1)}
+const dome=(x,y,r)=>{fg.beginPath();fg.arc(x,y,r,Math.PI,0);fg.fill()};
+const minaret=(x,y,u,h)=>{fg.fillRect(x-1.7*u,y-h*u,3.4*u,h*u);fg.fillRect(x-2.7*u,y-h*.62*u,5.4*u,1.7*u);fg.fillRect(x-2.5*u,y-h*.86*u,5*u,1.5*u);fg.beginPath();fg.moveTo(x-1.9*u,y-h*u);fg.lineTo(x,y-(h+13)*u);fg.lineTo(x+1.9*u,y-h*u);fg.fill()};
+const mosque=(x,sc,n)=>{const y=hill(x)+2,u=s*sc;fg.fillRect(x-50*u,y-16*u,100*u,16*u);fg.fillRect(x-21*u,y-25*u,42*u,9*u);dome(x,y-25*u,22*u);dome(x-31*u,y-16*u,13*u);dome(x+31*u,y-16*u,13*u);dome(x-44*u,y-16*u,6*u);dome(x+44*u,y-16*u,6*u);fg.fillRect(x-.8*u,y-55*u,1.6*u,9*u);
+const m=n===6?[[54,76],[66,68],[78,60]]:n===4?[[56,72],[68,62]]:[[56,70]];for(const[d,h]of m){minaret(x-d*u,y,u,h);minaret(x+d*u,y,u,h)}
+for(let i=-4;i<=4;i++)if(Math.random()<.8)lights.push([x+i*9*u,y-6*u])};
+const tower=(x,sc)=>{const y=hill(x)+2,u=s*sc;fg.fillRect(x-7*u,y-56*u,14*u,56*u);fg.fillRect(x-8.6*u,y-61*u,17.2*u,5*u);fg.beginPath();fg.moveTo(x-7.8*u,y-61*u);fg.lineTo(x,y-84*u);fg.lineTo(x+7.8*u,y-61*u);fg.fill();for(let i=0;i<4;i++)lights.push([x+rnd(-4,4)*u,y-rnd(20,52)*u])};
+mosque(W*.13,.85,2);tower(W*.31,1);mosque(W*.5,1.22,6);mosque(W*.74,.92,4);
+bridge=[];if(W>700){const xa=W*.84,xb=W*1.06,dy=base-H*.026,t1=xa+(xb-xa)*.18,th=H*.085;fg.strokeStyle="#03040a";fg.lineWidth=1.4;fg.beginPath();fg.moveTo(xa-20,dy);fg.lineTo(xb,dy);fg.stroke();fg.fillStyle="#020307";fg.fillRect(t1-2,dy-th,4,th+6);fg.lineWidth=1;fg.beginPath();fg.moveTo(xa-20,dy-2);fg.quadraticCurveTo((xa+t1)/2,dy-th*.2,t1,dy-th);fg.quadraticCurveTo(t1+(xb-t1)*.5,dy+th*.2,xb+60,dy-th*.9);fg.stroke();
+for(let i=0;i<=34;i++){const u=i/34,x=t1+(xb+60-t1)*u,y=(1-u)*(1-u)*(dy-th)+2*(1-u)*u*(dy+th*.2)+u*u*(dy-th*.9);bridge.push([x,y,u])}}
+fg.fillStyle="rgba(255,196,122,.85)";for(const[x,y]of lights)fg.fillRect(x,y,1.3,1.3);FG=fc}
+function resize(){W=innerWidth;H=innerHeight;D=Math.min(2,devicePixelRatio||1);C.width=W*D|0;C.height=H*D|0;cx=W/2;cy=H*.47;base=H*.83;R=Math.min((W/2-28)/1.38,H*.4);TY=H*.205;build();
+stars=[];const n=Math.min(720,W*base/2300|0);for(let i=0;i<n;i++){const z=rnd(.15,1);stars.push([rnd(-30,W+30),rnd(0,base*.98),z,rnd(.4,2.6),rnd(0,TAU),z>.93?1.7:z>.6?1.2:.9])}
+dust=[];for(let i=0;i<(W<700?150:260);i++){const r=rnd(.18,1.55)*R,a=rnd(0,TAU);dust.push({r,a,w:.22/Math.sqrt(r/R),x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r*.36,vx:0,vy:0,l:rnd(.2,.7)})}
+for(const b of B)b.tr.length=0}
+const S=document.createElement("canvas"),SG=S.getContext("2d",{willReadFrequently:true});
+function sample(txt){const font=f=>`italic 400 ${f}px Georgia,"Times New Roman",serif`;let fs=Math.min(H*.085,W*.085,66);SG.font=font(fs);let w=SG.measureText(txt).width;const mw=W*.88;if(w>mw){fs*=mw/w;w=mw}
+const h=Math.ceil(fs*1.6),ww=Math.ceil(w+fs);S.width=ww;S.height=h;SG.font=font(fs);SG.textBaseline="middle";SG.fillStyle="#fff";SG.fillText(txt,fs/2,h/2);
+const d=SG.getImageData(0,0,ww,h).data,g=Math.max(2,Math.round(fs/22)),pts=[];for(let y=0;y<h;y+=g)for(let x=0;x<ww;x+=g)if(d[(y*ww+x)*4+3]>110)pts.push([x,y]);
+const cap=W<700?1000:2000;while(pts.length>cap)pts.splice(Math.random()*pts.length|0,1);const ox=cx-ww/2,oy=TY-h/2;return pts.map(p=>[p[0]+ox+rnd(-.4,.4),p[1]+oy+rnd(-.4,.4)])}
+let enT=0;
+function write(ox,oy){const L=LINES[li];for(const p of P)if(p.st===1){p.st=2;p.vx+=rnd(-24,24);p.vy+=rnd(-36,-6)}
+if(ox==null){const b=B[L[2]];if(b){ox=b.p.x;oy=b.p.y;b.f=1}else{ox=cx;oy=cy}}
+const pts=sample(L[0]);let mn=1e9,mx=-1e9;for(const p of pts){if(p[0]<mn)mn=p[0];if(p[0]>mx)mx=p[0]}const span=Math.max(1,mx-mn),dur=Math.min(1.6,.35+L[0].length*.045);
+for(const[tx,ty]of pts)P.push({x:ox,y:oy,vx:rnd(-90,90),vy:rnd(-90,90),tx,ty,b:t,d:(tx-mn)/span*dur+rnd(0,.22),st:1,l:1,w:rnd(.55,1),g:Math.random()<.2});
+flare=Math.max(flare,li>=6?1:.35);clearTimeout(enT);EN.classList.remove("on");enT=setTimeout(()=>{EN.textContent=L[1];EN.classList.add("on")},900);
+li=(li+1)%LINES.length;nextAt=t+(li===0?16:9)}
+function hb(x){const p=x%1.55/1.55;return Math.exp(-((p-.08)**2)/.0016)+.55*Math.exp(-((p-.25)**2)/.0016)}
+function dimg(sp,x,y,sz,a){X.globalAlpha=a;X.drawImage(sp,x-sz/2,y-sz/2,sz,sz)}
+function body(b,dt){const p=b.p,s=p.s,dpt=.55+.45*(p.z/b.a+1)/2;
+X.globalCompositeOperation="lighter";X.strokeStyle=`rgba(${b.rgb},1)`;X.lineWidth=1.2*s;for(let i=1;i<b.tr.length;i++){X.globalAlpha=i/b.tr.length*.35*dpt;X.beginPath();X.moveTo(b.tr[i-1][0],b.tr[i-1][1]);X.lineTo(b.tr[i][0],b.tr[i][1]);X.stroke()}
+const g=(1+b.f*1.6+b.h*.5)*s;dimg(b.spr,p.x,p.y,70*g,.55*dpt);dimg(WHITE,p.x,p.y,14*s,.95);
+if(b.k==="moons"){for(let i=0;i<3;i++){const a=t*(1.4+i*.5)+i*2.1,r=(11+i*4)*s;dimg(b.spr,p.x+Math.cos(a)*r,p.y+Math.sin(a)*r*.45,9*s,.9)}
+X.strokeStyle="rgba(255,172,72,1)";X.lineWidth=.6;for(let i=0;i<lights.length;i+=9){X.globalAlpha=(.035+.03*Math.sin(t*1.3+i))*dpt*(1+b.f*3);X.beginPath();X.moveTo(p.x,p.y);X.lineTo(lights[i][0],lights[i][1]);X.stroke()}}
+else if(b.k==="facet"){const r=12*s*(1+b.f*.6),a=t*.6;X.globalAlpha=.75*dpt;X.strokeStyle=`rgba(${b.rgb},1)`;X.lineWidth=1;X.beginPath();for(let i=0;i<4;i++){const q=a+i*TAU/4;X[i?"lineTo":"moveTo"](p.x+Math.cos(q)*r,p.y+Math.sin(q)*r*.62)}X.closePath();X.stroke();const gl=Math.max(0,Math.sin(t*1.7))**24;if(gl>.02){X.globalAlpha=gl;X.drawImage(WHITE,p.x-30*s,p.y-1.5,60*s,3);X.drawImage(WHITE,p.x-1.5,p.y-22*s,3,44*s)}}
+else if(b.k==="fire"){const n=30;for(let i=0;i<n;i++){const a=i/n*TAU+t*.9,r=(15+2.6*Math.sin(t*7+i*1.9)+b.f*6)*s,fl=.5+.5*Math.sin(t*11+i*2.7);dimg(b.spr,p.x+Math.cos(a)*r,p.y+Math.sin(a)*r*.55,(7+fl*6)*s,(.35+.45*fl)*dpt)}}
+else{for(let k=0;k<3;k++){const ph=(t*.42+k/3)%1;X.globalAlpha=(1-ph)*.55*dpt;X.strokeStyle=`rgba(${b.rgb},1)`;X.lineWidth=1;X.beginPath();X.ellipse(p.x,p.y,(6+ph*46*(1+b.f))*s,(6+ph*46*(1+b.f))*s*.5,0,0,TAU);X.stroke()}}
+X.globalCompositeOperation="source-over";X.textAlign="center";X.font=`600 ${Math.round(9.5*Math.min(1.25,s))}px ui-sans-serif,system-ui,sans-serif`;if("letterSpacing"in X)X.letterSpacing="2px";
+X.globalAlpha=.78*dpt+.22*b.h;X.fillStyle="#efe6d6";X.fillText(b.n,p.x,p.y+24*s+6);
+if(b.h>.02){X.globalAlpha=b.h;X.fillStyle="#f3c77a";X.font=`italic 13px Georgia,serif`;if("letterSpacing"in X)X.letterSpacing="0px";X.fillText(b.s,p.x,p.y+24*s+23)}}
+function center(){const pu=1+.06*hb(t)+flare*.5;X.globalCompositeOperation="lighter";
+dimg(GOLD,cx,cy,R*2.3*pu,.16+flare*.25);dimg(GOLD,cx,cy,R*.7*pu,.55);dimg(WHITE,cx,cy,R*.2*pu,.9);dimg(WHITE,cx,cy,26*pu,1);
+X.globalAlpha=.32+flare*.3;X.drawImage(WHITE,cx-R*1.5*pu,cy-2.5,R*3*pu,5);X.globalAlpha=.12;X.drawImage(GOLD,cx-R*.9,cy-14,R*1.8,28);
+X.save();X.translate(cx,cy);X.rotate(t*.025);for(let i=0;i<12;i++){X.rotate(TAU/12);const L=R*(.34+.2*Math.sin(t*.6+i*2.3))*pu;X.globalAlpha=.1+.05*Math.sin(t+i);X.drawImage(GOLD,-2.5,-L,5,L*2)}X.restore();
+X.globalCompositeOperation="source-over";X.globalAlpha=.85;X.fillStyle="#f3c77a";X.textAlign="center";X.font="600 10px ui-sans-serif,system-ui,sans-serif";if("letterSpacing"in X)X.letterSpacing="4px";X.fillText("EYÜP DEVART",cx+2,cy+R*.2*pu/2+26)}
+function frame(now){const dt=Math.min(.05,(now-last)/1e3||.016);last=now;t+=RM?dt*.35:dt;
+M.sx+=((M.on?(M.x-cx)/W:0)-M.sx)*Math.min(1,dt*2);M.sy+=((M.on?(M.y-cy)/H:0)-M.sy)*Math.min(1,dt*2);
+if(t>nextAt)write();
+X.setTransform(D,0,0,D,0,0);X.globalCompositeOperation="source-over";X.globalAlpha=1;X.drawImage(BG,0,0,W,H);
+X.fillStyle="#fff6e8";for(const s of stars){X.globalAlpha=s[2]*(.35+.5*(.5+.5*Math.sin(t*s[3]+s[4])));X.fillRect(s[0]-M.sx*s[2]*26,s[1]-M.sy*s[2]*14,s[5],s[5])}
+if(t>shootAt&&!shoot){shoot={x:rnd(W*.1,W*.9),y:rnd(0,H*.25),vx:rnd(-1,1)<0?-620:620,vy:rnd(140,260),l:1};shootAt=t+rnd(6,14)}
+if(shoot){shoot.x+=shoot.vx*dt;shoot.y+=shoot.vy*dt;shoot.l-=dt*1.4;X.globalCompositeOperation="lighter";X.strokeStyle="#fff";X.lineWidth=1.2;for(let i=0;i<8;i++){X.globalAlpha=Math.max(0,shoot.l)*(1-i/8)*.7;X.beginPath();X.moveTo(shoot.x-shoot.vx*.012*i,shoot.y-shoot.vy*.012*i);X.lineTo(shoot.x-shoot.vx*.012*(i+1),shoot.y-shoot.vy*.012*(i+1));X.stroke()}if(shoot.l<=0)shoot=null}
+X.globalCompositeOperation="source-over";X.globalAlpha=1;X.drawImage(FG,0,0,W,H);
+X.globalCompositeOperation="lighter";X.fillStyle="#ffcf8f";for(let k=0;k<34;k++){const u=k/34,y=base+3+u**1.25*(H-base-6),w=(10+u*90)*(.35+.65*Math.abs(Math.sin(t*1.7+k*1.37)))*(1+flare*.6);X.globalAlpha=(.4*(1-u)+.05)*(.6+.4*Math.sin(t*2.3+k));X.fillRect(cx-w/2+Math.sin(t*1.1+k*.7)*6,y,w,1.4)}
+X.fillStyle="#ffc47a";for(let i=0;i<lights.length;i+=2){const[lx,ly]=lights[i],y=base+(base-ly)*.9+2;if(y>H)continue;X.globalAlpha=.22+.18*Math.sin(t*2+i);X.fillRect(lx-1+Math.sin(t*1.6+i)*1.5,y,3,1)}
+for(const[x,y,u]of bridge){X.globalAlpha=.85;X.fillStyle=`hsl(${(t*40+u*220)%360},80%,70%)`;X.fillRect(x-.8,y-.8,1.6,1.6);X.globalAlpha=.2;X.fillRect(x-1.5,base+(base-y)*.9+2,3,1)}
+X.lineWidth=1;X.globalAlpha=1;for(const b of B){X.strokeStyle=`rgba(${b.rgb},.075)`;X.beginPath();const o={};for(let i=0;i<=80;i++){orbit(b,i/80*TAU,o);X[i?"lineTo":"moveTo"](o.x,o.y)}X.stroke()}
+for(const b of B){const p=orbit(b,b.ph+t*b.sp,b.p);let tx=0,ty=0;if(M.on){const dx=M.x-p.x,dy=M.y-p.y,d=hyp(dx,dy),f=.3*Math.exp(-d/240);tx=dx*f;ty=dy*f;b.h+=((d<40?1:0)-b.h)*Math.min(1,dt*5)}else b.h+=(0-b.h)*Math.min(1,dt*3);
+b.ox+=(tx-b.ox)*Math.min(1,dt*3);b.oy+=(ty-b.oy)*Math.min(1,dt*3);p.x+=b.ox;p.y+=b.oy;b.f*=Math.exp(-dt*.7);b.tr.push([p.x,p.y]);if(b.tr.length>28)b.tr.shift()}
+const order=B.slice().sort((a,b)=>a.p.z-b.p.z);for(const b of order)if(b.p.z<0)body(b,dt);center();for(const b of order)if(b.p.z>=0)body(b,dt);
+X.globalCompositeOperation="lighter";X.fillStyle="#ffd9a0";for(const m of dust){m.a+=m.w*dt;const tx=cx+Math.cos(m.a)*m.r,ty=cy+Math.sin(m.a)*m.r*.36;let ax=(tx-m.x)*2.4,ay=(ty-m.y)*2.4;
+if(M.on){const dx=M.x-m.x,dy=M.y-m.y,d=hyp(dx,dy)+1;if(d<230){const f=(1-d/230)*1400/d;ax+=dx*f*.55-dy*f;ay+=dy*f*.55+dx*f}}
+m.vx=(m.vx+ax*dt)*(1-2.4*dt);m.vy=(m.vy+ay*dt)*(1-2.4*dt);m.x+=m.vx*dt;m.y+=m.vy*dt;X.globalAlpha=m.l*(.6+flare*.4);X.fillRect(m.x,m.y,1.4,1.4)}
+let dead=0;X.fillStyle="#ffeccc";const k=34,c=7.2;
+for(const p of P){const age=t-p.b;let a;if(p.st===1){if(age<p.d){continue}let ax=(p.tx-p.x)*k-p.vx*c,ay=(p.ty-p.y)*k-p.vy*c;if(M.on){const dx=p.x-M.x,dy=p.y-M.y,d=hyp(dx,dy)+.5;if(d<80){const f=(1-d/80)*5200/d;ax+=dx*f;ay+=dy*f}}p.vx+=ax*dt;p.vy+=ay*dt;a=Math.min(1,(age-p.d)*2.5)}
+else{p.vx+=Math.sin(t*1.3+p.ty*.05)*14*dt;p.vy-=10*dt;p.vx*=1-.6*dt;p.vy*=1-.6*dt;p.l-=dt*.32;if(p.l<=0){dead++;continue}a=p.l*p.l}
+p.x+=p.vx*dt;p.y+=p.vy*dt;X.globalAlpha=a*p.w;X.fillRect(p.x-.9,p.y-.9,1.8,1.8);if(p.g){X.globalAlpha=a*.16;X.drawImage(GOLD,p.x-7,p.y-7,14,14)}}
+if(dead)P=P.filter(p=>p.st===1||p.l>0);
+flare*=Math.exp(-dt*.9);requestAnimationFrame(frame)}
+addEventListener("pointermove",e=>{M.x=e.clientX;M.y=e.clientY;M.on=true},{passive:true});
+document.documentElement.addEventListener("pointerleave",()=>{M.on=false});
+C.addEventListener("pointerdown",e=>{M.x=e.clientX;M.y=e.clientY;M.on=e.pointerType==="mouse";write(e.clientX,e.clientY);if(!clicked){clicked=true;HI.classList.add("off")}});
+addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("a"))return;if(e.key===" "||e.key==="Enter"||e.key==="ArrowRight"){e.preventDefault();write()}});
+let rz=0;addEventListener("resize",()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame(resize)});
+const fmt=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"});
+function tick(){const s=fmt.format(new Date());CL.textContent="İSTANBUL · "+s;if(s==="00:00:00"){li=7;flare=1.6;write(cx,cy)}}
+setInterval(tick,1000);tick();resize();requestAnimationFrame(n=>{last=n;requestAnimationFrame(frame)});
+})();
+</script>
+</body>
+</html>
